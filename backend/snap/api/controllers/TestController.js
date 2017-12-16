@@ -6,8 +6,21 @@
  */
 
 module.exports = {
-	test: (req, res)=>{
-        res.status(200).send("Hello World!");
+	test1: (req, res)=>{
+
+        DatasetService.addToList().then((result)=>{
+
+            res.status(200).send(result);
+
+        });
+    },
+	test2: (req, res)=>{
+
+        DatasetService.fillInList().then((result)=>{
+
+            res.status(200).send(result);
+
+        });
     }
 };
 

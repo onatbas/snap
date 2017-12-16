@@ -36,7 +36,8 @@ module.exports.routes = {
     view: 'homepage'
   },
 
-  'get /api/test' : 'TestController.test'
+  'get /api/test1' : 'TestController.test1',
+  'get /api/test2' : 'TestController.test2'
 
   /***************************************************************************
   *                                                                          *
