@@ -17,7 +17,7 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(express.static(path.join(__dirname, 'dist')));
 
 // Api endpoints
-//proxy.pipeTo(app, '/api/*', 'http://' + (process.env.BACKEND_URL || '127.0.0.1') + ':8000');
+proxy.pipeTo(app, '/api/*', 'http://' + (process.env.BACKEND_URL || '127.0.0.1') + ':1337');
 
 // Catch all other routes and return the index file
 app.get('*', (req, res) => {

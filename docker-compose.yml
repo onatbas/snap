@@ -6,6 +6,8 @@ services:
       context: ./frontend/snap
     ports:
      - "1410:3000"
+    environment:
+      BACKEND_URL: "backend"
 
   backend:
     build:
