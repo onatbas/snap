@@ -1,0 +1,14 @@
+version: '2'
+services:
+
+  frontend:
+    build:
+      context: ./frontend/snap
+    ports:
+     - "1410:3000"
+
+  backend:
+    build:
+      context: ./backend/snap
+    ports:
+     - "1411:1337"
