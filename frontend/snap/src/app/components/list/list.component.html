@@ -1,0 +1,14 @@
+<table class="striped">
+    <thead>
+        <tr>
+            <th>Title</th>
+            <th>Contact Name</th>
+            <th>Last Modified</th>
+            <th>License</th>
+        </tr>
+    </thead>
+
+    <tbody>
+            <tr *ngFor="let dataset of datasets" listitem [dataset]="dataset"></tr>
+        </tbody>
+</table>

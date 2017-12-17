@@ -12,6 +12,9 @@ import { AppComponent } from './app.component';
 import { TestComponent } from './components/test/test.component';
 import { CardComponent } from './components/card/card.component';
 import { DatasetService } from './services/dataset/DatasetService';
+import { ListComponent } from './components/list/list.component';
+import { ListItemComponent } from './components/list/listitem/listitem.component';
+import { NavComponent } from './components/nav/nav.component';
 
 
 
@@ -19,7 +22,10 @@ import { DatasetService } from './services/dataset/DatasetService';
   declarations: [
     AppComponent,
     TestComponent,
-    CardComponent
+    CardComponent,
+    ListComponent,
+    ListItemComponent,
+    NavComponent
   ],
   imports: [
     BrowserModule,

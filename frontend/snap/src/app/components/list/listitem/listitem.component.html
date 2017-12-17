@@ -1,0 +1,17 @@
+    <td><a class="modal-trigger" attr.data-target="{{dataset.id}}">{{dataset.title}}</a></td>
+    <td>{{dataset.contact_name}}</td>
+    <td>{{dataset.modified_date}}</td>
+    <td>{{dataset.license_title}}</td>
+
+
+  <!-- Modal Structure
+       -->
+  <div attr.id="{{dataset.id}}" class="modal modal-fixed-footer">
+    <div class="modal-content">
+      <h4>{{dataset.title}}</h4>
+      <p>A bunch of text</p>
+    </div>
+    <div class="modal-footer">
+      <a href="{{dataset.url}}" class="modal-action modal-close waves-effect waves-green btn-flat ">Go to Resource</a>
+    </div>
+  </div>

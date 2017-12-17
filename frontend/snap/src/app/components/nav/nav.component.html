@@ -1,0 +1,21 @@
+<div class="container">
+
+<ul class="pagination">
+
+
+        <li (click)="onPageClick(currentPage-1)" [ngClass]="{'disabled': currentPage === 0, 'waves-effect': currentPage !== 0}"><a><i class="material-icons">chevron_left</i></a></li>
+     
+        <li *ngFor="let page of pages"  (click)="onPageClick(page)"
+        [ngClass]="{'active': page === currentPage, 'waves-effect': page !== currentPage}">
+        <div                 *ngIf="page > currentPage-3 && page < currentPage+3"        >
+                <a>{{page+1}}</a>
+        </div>
+    </li>
+     
+
+        <li (click)="onPageClick(currentPage+1)" [ngClass]="{'disabled': currentPage === pages.length-1, 'waves-effect': currentPage !== pages.length-1}"><a><i class="material-icons">chevron_right</i></a></li>
+
+    
+    </ul>
+    
+</div>

@@ -10,19 +10,24 @@ export class DatasetService {
         private http: Http
     ){}
 
+    getDatacount(): Promise<number>{
+      return new Promise((res)=>{
+        setTimeout(res(100), 10);
+      });
+    }
+
     getUrl(pageNumber:number, countOnPage:number): string{
         var dataUrl = '/api/data/:pageNumber/:countOnPage';
         return dataUrl.replace(":pageNumber", ""+pageNumber).replace(":countOnPage", ""+countOnPage);
     }
 
     getDatabyPage(pageNumber:number, countOnPage:number): Promise<Dataset[]> {
-
         return new Promise<Dataset[]>((resolve)=>{
             setTimeout(()=>{
                 resolve([ { name: '0026aa70-cc6d-4f6f-8c2f-554a2f9b17f2',
                 contact_email: 'michail.vousdoukas@ec.europa.eu',
                 contact_name: 'European Commission, Joint Research Centre (JRC)',
-                title: 'European Extreme Storm Surge level - Historical',
+                title: pageNumber + ' - European Extreme Storm Surge level - Historical',
                 description: 'The dataset contains the extreme storm surge levels (ESSL) at a European scale. The ESSL are estimated from an ensemble of 8 climatic models for the period from 1/12/1969 to 30/11/2004 and for 8 return periods (5, 10, 20, 50, 100, 200, 500, 1000) according to the Peak Over Threshold approach.\n\nFor further information regarding this dataset, the users are referred to the following article\nVousdoukas, M.I., Voukouvalas, E., Annunziato, A., Giardino, A., Feyen, L., 2016. Projections of extreme storm surge levels along Europe. Clim. Dyn. in press. DOI: 10.1007/s00382-016-3019-5',
                 modified_date: '2017-11-14T17:23:19.546175',
                 license_id: 'http://data.europa.eu/euodp/kos/licence/EuropeanCommission',
@@ -131,7 +136,7 @@ export class DatasetService {
                 id: '01gR6AIEivlA5S11A3MCA' } ]);
             }, 200);
         });
-     /*    
+        /*
         return new Promise<Dataset[]>(resolve => {
              this.http.get(this.getUrl(pageNumber, countOnPage))
                  .toPromise()
@@ -140,7 +145,8 @@ export class DatasetService {
                     resolve(datasets);
                  });
          });
-         */
+             */ 
+
      }
        
 }
