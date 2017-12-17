@@ -37,7 +37,9 @@ module.exports.routes = {
   },
 
   'get /api/test1' : 'TestController.test1',
-  'get /api/test2' : 'TestController.test2'
+  'get /api/test2' : 'TestController.test2',
+
+  'get /api/data/:page/:count' : 'DatasetController.getDatasets'
 
   /***************************************************************************
   *                                                                          *

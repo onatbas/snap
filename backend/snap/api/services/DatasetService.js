@@ -3,6 +3,19 @@ var http = require("http");
 
 var queueWorking = false;
 
+function getDatasets(options){
+    return new Promise((resolve, reject)=>{
+        sails.models.dataset.find({
+            skip: options.begin, 
+            limit: options.end-options.begin
+        }).exec((err, list)=>{
+            if (err) reject(err);
+
+            resolve(list);
+        });
+    });
+}
+
 function getFirstFromQueue(){
     if (queueWorking)
         return;
@@ -31,7 +44,7 @@ function getFirstFromQueue(){
 function addToQueue(options) {
     sails.models.dataset.find({where: { id: options.id }}).exec((err, list) => {
         if (!err && (!list || list.length == 0)) {
-            sails.models.queue.findOrCreate({id: options.id}).then((result)=>{
+            sails.models.queue.findOrCreate({id: options.id}).exec((err, result)=>{
                 
                 getFirstFromQueue();
             });
@@ -122,6 +135,7 @@ module.exports = {
     addToList: addToList,
     addToQueue: addToQueue,
     fillInList: fillInList,
-    getFirstFromQueue: getFirstFromQueue
+    getFirstFromQueue: getFirstFromQueue,
+    getDatasets: getDatasets
 
 }
