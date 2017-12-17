@@ -8,8 +8,87 @@
        -->
   <div attr.id="{{dataset.id}}" class="modal modal-fixed-footer">
     <div class="modal-content">
-      <h4>{{dataset.title}}</h4>
-      <p>A bunch of text</p>
+
+            <ul class="collapsible" data-collapsible="accordion">
+<li>
+    <div class="collapsible-header">
+        <i class="material-icons">title</i>
+        Title
+        <span class="badge">{{dataset.title}}</span></div>
+</li>
+
+
+
+<li>
+    <div class="collapsible-header">
+        <i class="material-icons">contacts</i>
+        Contact Name
+        <span class="badge">{{dataset.contact_name}}</span>
+    </div>
+</li>
+
+
+
+<li>
+    <div class="collapsible-header">
+        <i class="material-icons">email</i>
+        Contact Email
+        <span class="badge"><a href="{{'mailto:' + dataset.contact_email}}" class="waves-effect waves-light btn">Send an Email</a></span>
+    </div>
+</li>
+
+
+<li>
+    <div class="collapsible-header">
+        <i class="material-icons">subtitles</i>
+        License Title
+        <span class="badge">{{dataset.license_title}}</span>
+    </div>
+</li>
+
+<li>
+    <div class="collapsible-header">
+        <i class="material-icons">keyboard</i>
+        License ID
+        <span class="badge">{{dataset.license_id}}</span>
+    </div>
+</li>
+
+<li>
+    <div class="collapsible-header">
+        <i class="material-icons">web</i>
+        License URL
+        <span class="badge"><a href="{{dataset.license_url}}" class="waves-effect waves-light btn">View License</a></span>
+    </div>
+</li>
+
+
+<li>
+        <div class="collapsible-header">
+            <i class="material-icons">label</i>
+            Identifier
+            <span class="badge">{{dataset.id}}</span>
+        </div>
+    </li>
+
+    
+<li>
+        <div class="collapsible-header">
+            <i class="material-icons">event</i>
+            Last Modified
+            <span class="badge">{{dataset.modified_date}}</span>
+        </div>
+    </li>
+
+    
+
+            </ul>
+
+
+
+            <h4>Description</h4>
+            {{dataset.description}}
+            
     </div>
     <div class="modal-footer">
       <a href="{{dataset.url}}" class="modal-action modal-close waves-effect waves-green btn-flat ">Go to Resource</a>

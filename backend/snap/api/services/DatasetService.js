@@ -16,6 +16,14 @@ function getDatasets(options){
     });
 }
 
+function getDatasetCount(){
+    return new Promise((resolve)=>{
+        sails.models.dataset.count().exec((err, count)=>{
+            resolve(count)
+        });
+    });
+}
+
 function getFirstFromQueue(){
     if (queueWorking)
         return;
@@ -136,6 +144,7 @@ module.exports = {
     addToQueue: addToQueue,
     fillInList: fillInList,
     getFirstFromQueue: getFirstFromQueue,
-    getDatasets: getDatasets
+    getDatasets: getDatasets,
+    getDatasetCount: getDatasetCount
 
 }

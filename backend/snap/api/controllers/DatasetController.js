@@ -16,6 +16,14 @@ function getDatasets(req, res){
     });
 }
 
+function getDatasetCount(req, res){
+    DatasetService.getDatasetCount().then((count)=>{
+        console.log(count);
+        res.status(200).send({count: count});
+    });
+}
+
 module.exports = {
-    getDatasets: getDatasets
+    getDatasets: getDatasets,
+    getDatasetCount: getDatasetCount
 }
