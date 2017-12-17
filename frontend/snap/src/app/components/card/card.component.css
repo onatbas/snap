@@ -1,0 +1,5 @@
+.card {
+    display: inline-block;
+    overflow: visible;
+    max-width: 100%;
+  }
