@@ -138,6 +138,38 @@ function fillInList(options) {
     });
 }
 
+function searchFor(options){
+    return new Promise((resolve)=>{
+
+        var orpairs = [];
+        var fields =  [
+        'id',
+        'name',
+        'contact_email',
+        'contact_name',
+        'title',
+        'description',
+        'modified_date',
+        'license_id',
+        'license_title',
+        'license_url',
+        'url']
+        options.keywords.forEach((element)=>{
+            fields.forEach(key=>{
+                var obj = {};
+                obj[key] = {'contains' : element};
+                orpairs.push(obj);
+            });
+        });
+        
+        sails.models.dataset.find({
+            or: orpairs
+        }).exec((err, list)=>{
+            resolve(list);
+        });
+    });
+}
+
 module.exports = {
 
     addToList: addToList,
@@ -145,6 +177,7 @@ module.exports = {
     fillInList: fillInList,
     getFirstFromQueue: getFirstFromQueue,
     getDatasets: getDatasets,
-    getDatasetCount: getDatasetCount
+    getDatasetCount: getDatasetCount,
+    searchFor: searchFor
 
 }

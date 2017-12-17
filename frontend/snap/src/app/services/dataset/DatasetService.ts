@@ -2,6 +2,7 @@ import { Injectable } from "@angular/core";
 import { Headers, Http } from '@angular/http';
 import { Router } from '@angular/router';
 import { Dataset } from "./Dataset";
+import { Buffer } from 'buffer';
 
 @Injectable()
 export class DatasetService {
@@ -10,6 +11,27 @@ export class DatasetService {
   constructor(
     private http: Http
   ) { }
+
+  getSearchUrl(keyword:string): string{
+    var searchUrl = '/api/data/search/:keywords';
+    var buffer = new Buffer(keyword).toString('base64');
+    return searchUrl.replace(":keywords", buffer);
+
+  }
+
+  searchFor(keywords: string): Promise<Dataset[]>
+  {
+      return new Promise<Dataset[]>(resolve => {
+          var url = this.getSearchUrl(keywords);
+          console.log(url);
+          this.http.get(url)
+              .toPromise()
+              .then((resp) => {
+                  var datasets: Dataset[] = resp.json();
+                  resolve(datasets);
+              });
+      });
+  }
 
   getDatacount(): Promise<number> {
     return new Promise((res) => {

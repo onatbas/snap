@@ -1,4 +1,6 @@
-function getDatasets(req, res){
+var atob = require('atob');
+
+  function getDatasets(req, res){
     const params = req.params;
 
     const page = parseInt(params.page);
@@ -23,7 +25,17 @@ function getDatasetCount(req, res){
     });
 }
 
+function search(req, res){
+    var keywordsCommaSeperated = atob(req.params['base']);
+    var keywords = keywordsCommaSeperated.split(',');
+
+    DatasetService.searchFor({keywords: keywords}).then(results=>{
+        res.status(200).send(results);
+    });
+}
+
 module.exports = {
     getDatasets: getDatasets,
-    getDatasetCount: getDatasetCount
+    getDatasetCount: getDatasetCount,
+    search: search
 }
