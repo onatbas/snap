@@ -8,6 +8,7 @@
 module.exports = {
   tableName: 'datasets',
   attributes: {
+    id: { type: 'string', pk: true },
     name: { type: 'string' },
     contact_email: { type: 'string' },
     contact_name: { type: 'string' },

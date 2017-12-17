@@ -14,3 +14,13 @@ services:
       context: ./backend/snap
     ports:
      - "1411:1337"
+
+  mongo:
+    image: 'mongo:latest'
+    ports:
+     - "27017:27017"
+    environment:
+      MONGODB_USER: "mongo" 
+      MONGODB_PASS: "mongo"
+      MONGO_DATA_DIR: "/data/db"
+      MONGO_LOG_DIR: "/dev/null"

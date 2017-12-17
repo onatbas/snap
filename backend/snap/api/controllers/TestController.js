@@ -8,11 +8,8 @@
 module.exports = {
 	test1: (req, res)=>{
 
-        DatasetService.addToList().then((result)=>{
-
-            res.status(200).send(result);
-
-        });
+        setTimeout(DatasetService.getFirstFromQueue, 10);
+        res.status(200).send("ok");
     },
 	test2: (req, res)=>{
 

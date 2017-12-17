@@ -56,14 +56,14 @@ module.exports.connections = {
   * Run: npm install sails-mongo                                             *
   *                                                                          *
   ***************************************************************************/
-  // someMongodbServer: {
-  //   adapter: 'sails-mongo',
-  //   host: 'localhost',
-  //   port: 27017,
-  //   user: 'username', //optional
-  //   password: 'password', //optional
-  //   database: 'your_mongo_db_name_here' //optional
-  // },
+   mongo: {
+     adapter: 'sails-mongo',
+     host: 'localhost',
+     port: 27017,
+     //user: 'mongo', //optional
+     //password: 'mongo', //optional
+     //database: 'default' //optional
+   },
 
   /***************************************************************************
   *                                                                          *
@@ -74,13 +74,13 @@ module.exports.connections = {
   *                                                                          *
   *                                                                          *
   ***************************************************************************/
-  // somePostgresqlServer: {
-  //   adapter: 'sails-postgresql',
-  //   host: 'YOUR_POSTGRES_SERVER_HOSTNAME_OR_IP_ADDRESS',
-  //   user: 'YOUR_POSTGRES_USER', // optional
-  //   password: 'YOUR_POSTGRES_PASSWORD', // optional
-  //   database: 'YOUR_POSTGRES_DB' //optional
-  // }
+   somePostgresqlServer: {
+     adapter: 'sails-postgresql',
+     host: 'localhost',
+     user: 'postgres', // optional
+     password: 'postgres', // optional
+     database: 'postgres' //optional
+   },
 
 
   /***************************************************************************
@@ -89,4 +89,11 @@ module.exports.connections = {
   *                                                                          *
   ***************************************************************************/
 
+  cache: {
+    adapter: 'sails-redis',
+    url: 'redis://localhost:6379',
+  
+    // Other available low-level options can also be configured here.
+    // (see below for more information)
+  },
 };
