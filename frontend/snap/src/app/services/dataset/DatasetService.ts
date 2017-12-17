@@ -8,12 +8,14 @@ import { Buffer } from 'buffer';
 export class DatasetService {
 
 
+  local = false;
+
   constructor(
     private http: Http
   ) { }
 
   getSearchUrl(keyword:string): string{
-    var searchUrl = '/api/data/search/:keywords';
+    var searchUrl = '/api/search/:keywords';
     var buffer = new Buffer(keyword).toString('base64');
     return searchUrl.replace(":keywords", buffer);
 
@@ -47,7 +49,6 @@ export class DatasetService {
           });
       });
   }
-  local = false;
 
   getUrl(pageNumber: number, countOnPage: number): string {
     var dataUrl = '/api/data/:pageNumber/:countOnPage';

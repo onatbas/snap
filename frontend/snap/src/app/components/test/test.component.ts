@@ -2,6 +2,7 @@ import { Component } from "@angular/core";
 import { DatasetService } from "../../services/dataset/DatasetService";
 import { OnInit } from "@angular/core/src/metadata/lifecycle_hooks";
 import { Dataset } from "../../services/dataset/Dataset";
+import { Input } from "@angular/core";
 
 declare var $: any
 
@@ -19,6 +20,7 @@ export class TestComponent implements OnInit
 
     }
 
+    @Input() public search: string;
     public datasets: Dataset[] = [];
 
 
@@ -31,4 +33,31 @@ export class TestComponent implements OnInit
             this.datasets = datasets;
         });
     }
+
+
+    onSearchChange(){
+        var currString = this.search;
+  
+        setTimeout(()=>{
+          var newString = this.search;
+          if (newString === currString) // The input havent changed
+              this.searchFor(currString);
+        }, 500);
+    }
+  
+  
+    searchFor(searchString){
+        if (searchString.length <= 3)
+        {
+            this.pageChange(0);
+        }else{
+        this.datasetService.searchFor(searchString).then((listories:Dataset[])=>{
+            console.log(listories);
+          this.datasets = listories;
+        });
+      }
+    }
+
+    
+
 }

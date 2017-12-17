@@ -13,6 +13,15 @@
 
 
 -->
+
+
+<div class="input-field">
+  <input id="search" type="search" placeholder="Search" [(ngModel)]="search" (ngModelChange)="onSearchChange()"  >
+</div>
+
+
+
 <snapnav (pageChange)="pageChange($event)"></snapnav>
+
 
 <list class="list" [datasets]="datasets"></list>
